@@ -1,0 +1,43 @@
+<div class="container">
+  <div>
+    <h2>Ajouter un Medicament :</h2>
+  </div>
+  <form>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>ID Medicament</label>
+      <input type="text" [(ngModel)]="newMedicament.idMedicament" name="idMedicament" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom Medicaments</label>
+      <input type="text" [(ngModel)]="newMedicament.nomMedicament" name="nomMedicament" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Prix Medicament</label>
+      <input type="number" [(ngModel)]="newMedicament.prixMedicament" name="prixMedicament" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date création</label>
+      <input type="date" [(ngModel)]="newMedicament.dateCreation" name="dateCreation" class="form-control">
+      <label>Date Expiree </label>
+      <input type="date" [(ngModel)]="newMedicament.dateExpiree " name="dateExpiree " class="form-control">
+      <label>Quantite Medicament</label>
+      <input type="number" [(ngModel)]="newMedicament.quantite" name="quantite" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Forme</label>
+      <select class="form-control form-control-lg" id="idF" name="idF" [(ngModel)]="newIdFO">
+        <option *ngFor="let fo of formes" [value]="fo.idF">
+          {{fo.nomF}}
+        </option>
+      </select>
+    </div>
+
+    <div class="mt-2">
+      <button type="submit" (click)="addMedicament()" class="btn btn-success">Ajouter</button>
+      <div>
+        <h3>{{message}}</h3>
+      </div>
+    </div>
+
+  </form>
+</div>

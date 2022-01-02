@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <label>Formes </label>
+        <select class="form-control form-control-lg" id="idF" name="idF"[(ngModel)]="IDForme" (change)="onChange()">
+        <option *ngFor="let fo of formes" value="{{fo.idF}}">
+        {{fo.nomF}}
+        </option>
+        </select>
+        </div>
+        
+    <div class="card shadow mb-4">
+         <div class="card-body">
+            <table class="table table-striped">
+                <tr> <th>Id</th><th>Nom</th> <th>Prix</th> <th>Date Création</th><th>Date Expiree </th><th>Quantite </th><th>Formes</th>  </tr>
+
+                <thead>
+                    <tr>
+                        <th colspan="7"><p align="center"  style="font-size:50px">Liste de Medicaments</p></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor= " let medicament of medicaments">   
+                    <tr >
+                        <td>{{medicament.idMedicament}}</td>
+                        <td>{{medicament.nomMedicament}}</td>
+                        <td>{{medicament.prixMedicament}}</td>
+                        <td>{{medicament.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{medicament.dateExpiree | date:'dd/MM/yyyy'}}</td>
+                        <td>{{medicament.quantite}}</td>
+                        <td>{{medicament.forme.nomF}}</td>
+                        
+                        <td><a *ngIf="authService.isAdmin()"class="btn btn-success" [routerLink]="['/updateMedicament',medicament.idMedicament]">Modifier</a></td>
+                        <td><a *ngIf="authService.isAdmin()"class="btn btn-danger" (click)="supprimerMedicament(medicament)">Supprimer</a></td>    
+                    </tr>
+               </tbody>
+
+             </table>
+        </div>
+    </div>
+</div>
